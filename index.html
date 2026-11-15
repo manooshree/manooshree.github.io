@@ -1,54 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet"
-          href="https://fonts.google.com/specimen/Karla"> -->
-    <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manooshree Patel</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐️</text></svg>">
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <h1>
-        <a href = "index.html">manooshree</a>
-    </h1>
-    <nav>
-        <div class ="nav-items">
-            <!-- <a href="index.html">About</a> -->
-            <a href="research.html">Research</a>
-            <a href="projects.html">Projects</a>
-            <a href="teaching.html">Teaching</a>
-        </div>
+  <div class="page">
 
-    </nav>
-    <main>
-        <h3>About </h3>
-        <!-- <img src="profilepic.jpeg"> -->
-        <p>I'm a second year 
-            <a href="https://sesame.berkeley.edu/home">Science and Math Education PhD </a>
-            student at UC Berkeley and am also pursuing an MS in Electrical Engineering and Computer Science. 
-            I am advised by Dr. Dor  Abrahamson in the 
-            <a href="https://edrl.berkeley.edu/people/manooshree-patel/">EDRL</a>
-            and by Dr. Gireeja Ranade in 
-            <a href="https://eecs.berkeley.edu">EECS</a>. 
-            <br>
-            <br>
-        Before returning to school, I was an Engineering Program Manager at Apple in Health Sensing Technologies where I worked on 
-        <a href=" https://support.apple.com/guide/watch/track-your-sleep-apd830528336/watchos">Apple Watch features</a>. 
-        I completed my undergraduate degree from UC Berkeley in Bioengineering and was a student researcher in Dr. Moriel Vandsburger's cardiovascular imaging lab.  </p>
-        <h3>Contact </h3>
-        <p>
-            You can contact me at 
-            <code>manooshree at berkeley dot edu</code>
-            
+    <h1 class="name"><a href="index.html">Manooshree Patel</a></h1>
 
-
+    <section class="bio-page">
+      <figure class="bio-photo">
+        <img src="images/bio-photo.jpg" alt="Manooshree Patel speaking into a microphone">
+        <figcaption>Photo: Louis James-Parker</figcaption>
+      </figure>
+      <div class="bio-text">
+        <p>Hello! I am a PhD student in <a href="https://sesame.berkeley.edu/home">Math Education</a> and an MS student in <a href="https://eecs.berkeley.edu/">EECS</a> at UC Berkeley. I am advised by <a href="https://gireejar.github.io/">Gireeja Ranade</a> and <a href="https://bse.berkeley.edu/dor-abrahamson">Dor Abrahamson</a>. My research explores how interactive theorem provers and AI can support the teaching and learning of mathematical proof at scale. I lead the development of <a href="https://leantutor.org/">LeanTutor</a>, a Lean-based AI tutor for undergraduate proofs that provides students with immediate feedback on their proofs and helps make Lean more accessible.</p>
+        <p>During my PhD, I have worked at <a href="https://axiommath.ai/">Axiom Math</a> as a research intern and at <a href="https://uplimit.com/">Uplimit</a> as a software engineering intern.</p>
+        <p>Before graduate school, I worked at Apple in the <a href="https://www.apple.com/health/">Health Sensing Technologies</a> group. I earned a B.S. in Bioengineering from UC Berkeley.</p>
+        <p class="links">
+          <span class="email-wrap">
+            <a href="#" class="email-toggle" aria-expanded="false" aria-controls="email-pop">Email</a>
+            <span class="email-pop" id="email-pop" role="dialog" aria-label="Email address" hidden>
+              <span class="email-addr">manooshreepatel@berkeley.edu</span>
+              <button type="button" class="copy-btn" aria-label="Copy email address" title="Copy">
+                <svg class="icon-copy" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                <svg class="icon-check" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12l5 5L20 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="copied-msg" aria-live="polite"></span>
+            </span>
+          </span> &nbsp;/&nbsp;
+          <a href="https://scholar.google.com/citations?user=8OF7FRsAAAAJ">Scholar</a> &nbsp;/&nbsp;
+          <a href="https://github.com/manooshree">GitHub</a>
         </p>
+      </div>
+    </section>
 
+    <hr>
 
-    
-    
-    </main>
+    <h2>Writing</h2>
+
+    <div class="entry">
+      <div class="details">
+        <span class="title">What Math Education Research Can Offer to the AI-Math Debate</span> <!-- link later: href="math-ed-ai.html" -->
+        <div class="venue">Nov 2026</div>
+        <p>Recent AI-generated discoveries in mathematics have surfaced fundamental questions about what it means to do mathematics. I believe math education research can offer valuable frameworks and definitions to the AI-math discussion.</p>
+        <p>I argue two things: (1) productive human-AI interaction in mathematics must preserve mathematicians' agency and <span class="green">engage with existing sociomathematical norms</span>, and (2) Lean code can be used not just to verify a theorem, but to <span class="purple">better understand a mathematical argument</span>.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>Selected Publications</h2>
+
+    <div class="entry">
+      <div class="thumb wide"><img src="images/leanside.png" alt="LeanSide interface: a student's step-by-step proof on the left, with the LeanSide compiler's verified claims on the right"></div>
+      <div class="details">
+        <a class="title" href="https://arxiv.org/abs/2610.00760">LeanSide: A Formally Verified Co-Reasoning System for Natural-language Proofs</a>
+        <div class="authors">Chenjun Guo, <span class="me">Manooshree Patel</span>, Arnav Mehta, Krishiv Kothari, Thomas Lu, Niels Voss, Rayna Bhattacharyya, Peter Donovan, Bjoern Hartmann, Gireeja Ranade</div>
+        <div class="venue">Under review at CHI 2027</div>
+        <div class="entry-links"><a href="https://leantutor.org/">project page</a> / <a href="https://arxiv.org/pdf/2610.00760">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="thumb wide"><a href="https://leantutor.org/"><img src="images/leantutor.png" alt="LeanTutor pipeline: a student's natural-language proof is autoformalized, a next step is generated, and feedback is returned"></a></div>
+      <div class="details">
+        <a class="title" href="https://arxiv.org/abs/2506.08321">LeanTutor: Towards a Verified AI Mathematical Proof Tutor</a>
+        <div class="authors"><span class="me">Manooshree Patel</span>, Rayna Bhattacharyya, Thomas Lu, Arnav Mehta, Niels Voss, Narges Norouzi, Gireeja Ranade</div>
+        <div class="venue">AAAI 2026; ICML 2025 AI for Math Workshop</div>
+        <div class="entry-links"><a href="https://leantutor.org/">project page</a> / <a href="https://arxiv.org/pdf/2506.08321">arXiv</a> / <a href="slides/leantutor-eaai2026.pdf">slides</a> / <a href="https://github.com/RanadeLabBerkeley/Lean-Tutor-V0/tree/main/code_and_dataset">code</a></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="thumb wide"><img src="images/proofrepairbench.png" alt="Bar chart: effect of Lean feedback on proof repair success for Goedel-Prover-V2-32B and Claude Opus 4.5"></div>
+      <div class="details">
+        <a class="title" href="https://openreview.net/forum?id=6SwWVNwEJK">ProofRepairBench: Exploring Proof Repair in Lean</a>
+        <div class="authors"><span class="me">Manooshree Patel</span>, Bartosz Piotrowski, Leopold Haller, Hugh James Leather</div>
+        <div class="venue">ICLR 2026 Workshop VerifAI-2</div>
+        <div class="entry-links"><a href="https://openreview.net/forum?id=6SwWVNwEJK">OpenReview</a> / <a href="slides/proofrepairbench-iclr2026-poster.pdf">poster</a></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="thumb wide"><img src="images/coreasoning-emnlp.png" alt="Pipeline diagram: a free-form natural-language proof is disambiguated, turned into Lean statements, proved lemma by lemma, and assembled into a complete Lean proof"></div>
+      <div class="details">
+        <a class="title" href="https://aclanthology.org/2026.findings-emnlp.977/">Formally Verified AI Co-Reasoning: An Education Case Study</a>
+        <div class="authors">Arnav Mehta, Chenjun Guo, Thomas Lu, Niels Voss, <span class="me">Manooshree Patel</span>, Rayna Bhattacharyya, Peter Donovan, Gireeja Ranade</div>
+        <div class="venue">Findings of EMNLP 2026</div>
+        <div class="entry-links"><a href="https://leantutor.org/">project page</a> / <a href="https://aclanthology.org/2026.findings-emnlp.977.pdf">paper</a></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="thumb wide"><img src="images/autoformalize-plateau.png" alt="A handwritten student proof that says 'by similar reasoning', next to a baseline LLM autoformalization in Lean that misses a step"></div>
+      <div class="details">
+        <a class="title" href="https://kilthub.cmu.edu/articles/conference_contribution/Bridging_the_gap_to_autoformalize_free-form_human_reasoning/31816738">Bridging the Gap to Autoformalize Free-Form Human Reasoning</a>
+        <div class="authors">Chenjun Guo, <span class="me">Manooshree Patel</span>, Arnav Mehta, Rayna Bhattacharyya, Thomas Lu, Niels Voss, Bjoern Hartmann, JD Zamfirescu-Pereira, Sarah Chasins, Gireeja Ranade</div>
+        <div class="venue">PLATEAU Workshop 2026; NeurIPS 2025 AI for Math Workshop</div>
+        <div class="entry-links"><a href="https://leantutor.org/">project page</a> / <a href="https://kilthub.cmu.edu/articles/conference_contribution/Bridging_the_gap_to_autoformalize_free-form_human_reasoning/31816738">paper</a> / <a href="https://openreview.net/forum?id=0IsLjMjD0P">OpenReview</a> / <a href="slides/autoformalize-neurips2025-poster.pdf">poster</a></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="thumb wide"><img src="images/study-groups-timeline.png" alt="Study groups timeline over the semester, next to the EECS 16A homework assignment that invited students to sign up"></div>
+      <div class="details">
+        <a class="title" href="https://ieeexplore.ieee.org/abstract/document/10343384">Student Feedback on Opt-in, Inclusive, Course-Integrated Study Groups</a>
+        <div class="authors">Bridget Agyare*, Alicia Matsumoto*, <span class="me">Manooshree Patel*</span>, Gireeja Ranade</div>
+        <div class="venue">IEEE Frontiers in Education (FIE), 2023</div>
+        <div class="entry-links"><a href="https://ieeexplore.ieee.org/abstract/document/10343384">paper</a> / <a href="slides/study-groups-fie2023.pdf">slides</a> / <a href="https://github.com/RanadeLabBerkeley/study-group-matcher">code</a></div>
+        <p class="note">*Equal contribution</p>
+      </div>
+    </div>
+
+    <footer>
+      Design adapted from <a href="https://github.com/jonbarron/jonbarron.github.io">Jon Barron's website</a>.
+    </footer>
+
+  </div>
+  <script>
+    // Email popover: click "Email" to show the address with a copy button.
+    (function () {
+      var toggle = document.querySelector('.email-toggle');
+      var pop = document.getElementById('email-pop');
+      if (!toggle || !pop) return;
+      var btn = pop.querySelector('.copy-btn');
+      var msg = pop.querySelector('.copied-msg');
+      var addr = pop.querySelector('.email-addr').textContent.trim();
+
+      function open() { pop.hidden = false; toggle.setAttribute('aria-expanded', 'true'); }
+      function close() { pop.hidden = true; toggle.setAttribute('aria-expanded', 'false'); btn.classList.remove('copied'); msg.textContent = ''; }
+
+      toggle.addEventListener('click', function (e) { e.preventDefault(); pop.hidden ? open() : close(); });
+      document.addEventListener('click', function (e) { if (!pop.hidden && !e.target.closest('.email-wrap')) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+      btn.addEventListener('click', function () {
+        function done() { btn.classList.add('copied'); msg.textContent = 'Copied!'; setTimeout(function () { btn.classList.remove('copied'); msg.textContent = ''; }, 1800); }
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(addr).then(done, fallback);
+        } else { fallback(); }
+        function fallback() {
+          var r = document.createRange(); r.selectNodeContents(pop.querySelector('.email-addr'));
+          var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+          try { document.execCommand('copy'); done(); } catch (err) { msg.textContent = 'Press Cmd+C to copy'; }
+        }
+      });
+    })();
+  </script>
 </body>
-<script>src ="app.js"</script> 
 </html>
