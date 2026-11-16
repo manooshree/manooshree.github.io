@@ -46,6 +46,8 @@ OpenAI. (2026a, September 8). *On the Navier–Stokes Millennium Prize Problem*.
 
 OpenAI. (2026b, October 6). *Sharing AI progress in mathematics*. https://openai.com/index/sharing-ai-progress-in-mathematics/
 
+Patel, M., Bhattacharyya, R., Lu, T., Mehta, A., Voss, N., Norouzi, N., & Ranade, G. (2026). LeanTutor: Towards a verified AI mathematical proof tutor. *Proceedings of the AAAI Conference on Artificial Intelligence, 40*(47), 40670–40678. https://arxiv.org/pdf/2506.08321
+
 Proofs and Prompts. (2026, October 8). *100+ reactions to 100+ solutions*. https://proofsandprompts.com/2026/10/08/100-reactions-to-100-solutions/
 
 Scholze, P. (2021, June 5). *Half a year of the Liquid Tensor Experiment: Amazing developments*. Xena. https://xenaproject.wordpress.com/2021/06/05/half-a-year-of-the-liquid-tensor-experiment-amazing-developments/
