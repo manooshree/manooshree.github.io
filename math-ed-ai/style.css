@@ -1,0 +1,563 @@
+:root {
+  --text: #1f2328;
+  --muted: #656d76;
+  --bg: #ffffff;
+  --border: #d8dee4;
+  --accent: #2f6feb;
+  --placeholder: #f3f4f6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+               Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.post {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 5rem;
+}
+
+button { font-family: inherit; }
+
+.post-header { margin-bottom: 2.5rem; }
+h1 { font-size: 2.25rem; line-height: 1.2; margin: 0 0 0.5rem; }
+h2 { font-size: 1.5rem; margin: 2.5rem 0 0.75rem; }
+h3 { font-size: 1.2rem; margin: 2rem 0 0.5rem; }
+.subtitle { font-size: 1.4rem; font-weight: 600; color: #444c56; margin: 0 0 1rem; }
+.byline { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+a { color: var(--muted); text-decoration: none; }
+a:hover { color: var(--text); }
+.purple, .purple a { color: #a747a3; }
+.green, .green a { color: #39873C; }
+.purple a:hover { color: #451944; }
+.green a:hover { color: #153B16; }
+
+/* Thesis sentences: underlined */
+.thesis { text-decoration: underline; text-underline-offset: 0.2em; }
+
+/* Intro labels that jump to their sections: plain text until hovered */
+/* Intro issue headings: colored like their sections, darker on hover */
+a[href="#sociomathematical-norms"] { color: #a747a3; text-decoration: none; }
+a[href="#epistemic-role-of-lean"] { color: #39873C; text-decoration: none; }
+a[href="#sociomathematical-norms"]:hover { color: #451944; }
+a[href="#epistemic-role-of-lean"]:hover { color: #153B16; }
+
+/* Question with two quotes side by side; stacks on narrow screens */
+.question-box { margin: 1rem 0; }
+.question-box h3 {
+  margin: 0 0 0.15rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 500;
+  font-style: italic;
+  color: #000;
+}
+.question-box .q-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 1.25rem;
+  row-gap: 0.1rem;
+}
+.question-box .q-row h3 { margin: 0; }
+.answer-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-style: italic;
+  line-height: 1.7;
+}
+/* Filled triangle drawn as a mask so it takes the label's color; points down, flips up when open */
+.answer-toggle::after {
+  content: "";
+  width: 0.7em;
+  height: 0.7em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 4.8v14.4a1.2 1.2 0 0 0 1.8 1l11.5-7.2a1.2 1.2 0 0 0 0-2L8.8 3.8A1.2 1.2 0 0 0 7 4.8z' fill='black'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 4.8v14.4a1.2 1.2 0 0 0 1.8 1l11.5-7.2a1.2 1.2 0 0 0 0-2L8.8 3.8A1.2 1.2 0 0 0 7 4.8z' fill='black'/%3E%3C/svg%3E") center / contain no-repeat;
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+.answer-toggle[aria-expanded="true"]::after { transform: rotate(-90deg); }
+.answer-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 2px; }
+.question-box blockquote {
+  margin: 0.5rem 0 1rem;
+  padding: 0;
+  border: 0;
+  font-style: normal;
+}
+.question-box blockquote p { margin: 0; font-style: italic; }
+.question-box cite, .question-box cite a { color: var(--text); }
+.question-box cite { display: block; margin-top: 0.5rem; font-size: 0.9rem; font-style: normal; }
+
+/* Figures */
+figure { margin: 2rem 0; }
+figure img { display: block; width: 100%; height: auto; border-radius: 6px; }
+figcaption {
+  font-size: 0.85rem;
+  color: var(--text);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+.placeholder {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  background: var(--placeholder);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Carousel */
+.carousel { position: relative; }
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  border-radius: 6px;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 100%; scroll-snap-align: center; }
+
+.carousel-btn {
+  position: absolute;
+  top: calc(50% - 1.5rem);
+  transform: translateY(-50%);
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.carousel-btn.prev { left: 0.5rem; }
+.carousel-btn.next { right: 0.5rem; }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+.carousel-dots button {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+}
+.carousel-dots button.active { background: var(--text); }
+
+/* Two scrolling quote boxes side by side; stacks on narrow screens */
+.quote-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+@media (max-width: 40rem) {
+  .quote-pair { grid-template-columns: 1fr; }
+}
+/* Caption under each box, and one overall caption spanning both */
+.quote-caption {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-align: center;
+}
+.quote-pair > figcaption { grid-column: 1 / -1; margin-top: 0; }
+
+/* Fixed-height box; scroll down inside it to read the next quote */
+.quote-box {
+  height: 40rem;
+  overflow-y: auto;
+  padding: 1.25rem 1.5rem;
+  border-radius: 6px;
+  background: var(--quote-bg);
+  color: #000;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+/* Base colors lightened by mixing with white; raise the % for a stronger tint */
+.quotes-green  { --quote-bg: color-mix(in srgb, #39873C 20%, white); }
+.quotes-purple { --quote-bg: color-mix(in srgb, #a747a3 20%, white); }
+.quotes-dark-purple { --quote-bg: #e89fe4; }
+
+/* A thin divider between quotes in the same box */
+.quote + .quote {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+.quote p { margin: 0 0 0.75rem; }
+.quote cite {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* LeanTutor heading: the green "T" turns into a turnstile (⊢) and back.
+   It turns three times on load, then once more each time the heading is hovered. */
+.lt-logo > span { display: inline-block; vertical-align: baseline; }
+/* The logo links to leantutor.org but keeps its normal (dark) color */
+a.lt-logo, a.lt-logo:hover { color: var(--text); }
+.lt-t { position: relative; width: 0.84em; height: 0; } /* wider = more space either side of the T */
+.lt-t-glyph {
+  position: absolute;
+  width: 1.21em; height: 1.21em;
+  left: 50%; margin-left: -0.605em; bottom: -0.254em;
+  fill: #14a063;
+  transform-origin: 50% 50%;
+}
+.lt-t-glyph.turning { animation: lt-turn 3.6s ease-in-out 3; }
+.lt-t-glyph.turning-once { animation: lt-turn-once 2.4s ease-in-out 1; }
+@keyframes lt-turn {
+  0%, 40% { transform: rotate(0); }
+  50%, 90% { transform: rotate(-90deg); }
+  to { transform: rotate(0); }
+}
+/* Hover version: turns right away (no wait at the start), holds, then turns back. */
+@keyframes lt-turn-once {
+  0% { transform: rotate(0); }
+  20%, 70% { transform: rotate(-90deg); }
+  90%, to { transform: rotate(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lt-t-glyph.turning, .lt-t-glyph.turning-once { animation: none; }
+}
+
+/* Vincent's proof timeline: a vertical line of bubbles. Clickable bubbles
+   (<details>) open a transcript + analysis panel underneath. */
+.timeline, .tl-layout {
+  --tl-purple: #6f3c7a;
+  --tl-panel-bg: #f6f4f8;
+  --tl-dot: 1.4rem;
+}
+/* Green version (Nick's timeline, in the Lean section): add class tl-green */
+.timeline.tl-green, .tl-layout:has(> .tl-green) {
+  --tl-purple: #2f6f32;
+  --tl-panel-bg: #f2f7f2;
+}
+.timeline {
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 2.6rem;
+}
+.timeline::before {                 /* the vertical line */
+  content: "";
+  position: absolute;
+  left: calc(var(--tl-dot) / 2 - 1.5px);
+  top: 0.6rem; bottom: 0;
+  width: 3px;
+  background: var(--tl-purple);
+}
+.tl-step { position: relative; margin: 0 0 2.25rem; }
+.tl-step:last-child { margin-bottom: 0; }
+.tl-dot {
+  position: absolute;
+  left: -2.6rem; top: 0.15rem;
+  width: var(--tl-dot); height: var(--tl-dot);
+  border-radius: 50%;
+  border: 1.5px solid var(--tl-purple);
+  background: #e6e6ea;
+  transition: background 0.15s, transform 0.15s;
+}
+.tl-text { display: block; margin: 0; }
+
+/* Bubbles with drop-downs (<details class="tl-drop">): the dot and the
+   description open the first drop-down; each label toggles its own. */
+.tl-step:has(.tl-drop) > .tl-dot,
+.tl-step:has(.tl-drop) > .tl-text { cursor: pointer; }
+.tl-step:has(.tl-drop) > .tl-dot { background: color-mix(in srgb, var(--tl-purple) 25%, white); }
+.tl-step:has(.tl-drop) > .tl-dot:hover { transform: scale(1.12); }
+.tl-step:has(.tl-drop[open]) > .tl-dot { background: var(--tl-purple); }
+.tl-drop { margin-top: 0.35rem; }
+.tl-drop > summary { list-style: none; cursor: pointer; width: fit-content; }
+.tl-drop > summary::-webkit-details-marker { display: none; }
+.tl-hint {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tl-purple);
+}
+.tl-hint::after { content: " ▸"; }
+.tl-drop[open] > .tl-hint::after { content: " ▾"; }
+.tl-drop > summary:focus-visible { outline: 2px solid var(--tl-purple); outline-offset: 3px; border-radius: 4px; }
+.tl-drop[open] + .tl-drop { margin-top: 1rem; }
+
+.tl-panel {
+  margin-top: 0.9rem;
+  padding: 1rem 1.25rem;
+  background: var(--tl-panel-bg);
+  border-left: 3px solid var(--tl-purple);
+  border-radius: 0 6px 6px 0;
+}
+.tl-panel h4 {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tl-purple);
+}
+.tl-panel h4:not(:first-child) { margin-top: 1.1rem; }
+.tl-panel p { margin: 0 0 0.6rem; }
+.tl-panel p:last-child { margin-bottom: 0; }
+.tl-transcript { font-size: 0.95rem; }
+.tl-time { color: var(--muted); font-size: 0.8rem; font-variant-numeric: tabular-nums; margin-right: 0.25rem; }
+
+/* Transcript as three invisible columns: time | speaker | utterance */
+.tl-transcript {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  column-gap: 1rem;
+  row-gap: 0.6rem;
+}
+.tl-transcript > p { display: contents; }
+.tl-transcript .tl-time { margin: 0; padding-top: 0.15rem; }
+.tl-transcript b { white-space: nowrap; font-weight: normal; }
+.tl-utt { font-family: "Courier Prime", "Courier New", Courier, monospace; }
+/* Phones: time + speaker on one line, the utterance underneath at full width */
+@media (max-width: 540px) {
+  .tl-transcript { grid-template-columns: auto 1fr; row-gap: 0.15rem; }
+  .tl-utt { grid-column: 1 / -1; margin-bottom: 0.6rem; }
+}
+
+/* Analysis sits above the transcript box, outside the purple panel */
+.tl-analysis { margin: 0.9rem 0 1rem; }
+.tl-analysis p { margin: 0 0 0.6rem; }
+.tl-analysis p:last-child { margin-bottom: 0; }
+
+/* Timestamp shown above a bubble's description */
+.tl-stamp {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.1rem;
+}
+/* Screenshot drop-down (no purple box, just the image) */
+.tl-screen { margin-top: 0.9rem; }
+.tl-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.tl-screen img + img { margin-top: 0.75rem; }
+
+/* ---- Timeline: chapters, time gaps, side panel ---- */
+
+/* Chapter headings ("Warm-up", "Proof 3", ...) with a short bar across the line */
+.tl-chapter {
+  position: relative;
+  margin: 0 0 0.9rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.tl-chapter::before {
+  content: "";
+  position: absolute;
+  left: calc(-2.6rem + var(--tl-dot) / 2 - 0.55rem);
+  top: 50%;
+  width: 1.1rem; height: 3px;
+  background: var(--tl-purple);
+}
+.tl-gap + .tl-chapter { margin-top: 0.25rem; }
+
+/* Space between bubbles, sized from the timestamps by timeline.js */
+.timeline.has-gaps .tl-step { margin-bottom: 0; }
+.tl-gap {
+  height: var(--gap, 2.25rem);
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* The side panel only exists on wide screens */
+.tl-side { display: none; }
+
+@media (min-width: 1000px) {
+  /* Let this widget run wider than the text column */
+  .tl-layout {
+    --tl-wide: min(76rem, calc(100vw - 4rem));
+    width: var(--tl-wide);
+    margin: 2.5rem 0 2.5rem calc((100% - var(--tl-wide)) / 2);
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: 3rem;
+    align-items: start;
+  }
+  .tl-layout .timeline { margin: 0; }
+
+  /* Captions are quieter until selected, so "where you are" stands out */
+  .tl-layout.is-side .tl-text { color: var(--muted); transition: color 0.15s; }
+  .tl-layout.is-side .tl-step:hover > .tl-text,
+  .tl-layout.is-side .tl-step.is-active > .tl-text { color: var(--text); }
+  .tl-step.is-active > .tl-dot { background: var(--tl-purple); transform: scale(1.15); }
+  .tl-step.is-active::after {        /* little pointer toward the panel */
+    content: "";
+    position: absolute;
+    right: -2rem; top: 0.35rem;
+    border: 0.45rem solid transparent;
+    border-left-color: var(--tl-purple);
+  }
+
+  /* Drop-down labels become shortcuts into the panel */
+  .tl-layout.is-side .tl-drop { display: inline-block; margin: 0.35rem 1rem 0 0; }
+  .tl-layout.is-side .tl-drop > :not(summary) { display: none; }
+  .tl-layout.is-side .tl-drop.is-current > .tl-hint { text-decoration: underline; text-underline-offset: 3px; }
+
+  .tl-side {
+    display: block;
+    position: sticky;
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    padding: 0 0.5rem 0.5rem 0;
+    background: var(--bg);
+  }
+  .tl-side > :first-child,
+  .tl-side-screen > .tl-screen:first-child { margin-top: 0; }
+  /* Screen pinned above a scrolling transcript (only when the window is tall
+     enough for both; timeline.js decides) */
+  .tl-side-screen.is-pinned {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--bg);
+    padding-bottom: 0.25rem;
+  }
+}
+
+/* Click a screenshot to see it full size */
+.tl-screen img { cursor: zoom-in; }
+.tl-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vh 2vw;
+  background: rgba(20, 16, 24, 0.82);
+  cursor: zoom-out;
+}
+.tl-zoom img { max-width: 96vw; max-height: 94vh; width: auto; height: auto; border-radius: 6px; background: #fff; }
+.tl-analysis .tl-notes-label { font-weight: 600; margin-bottom: 0.2rem; }
+
+/* Epigraph quote at the top of a section */
+.epigraph { margin: 0 0 1.75rem; text-align: center; color: #6e7681; font-style: italic; }
+.epigraph p { margin: 0; }
+.epigraph .epigraph-cite { margin-left: 0.4rem; font-size: 0.9rem; font-style: normal; white-space: nowrap; }
+.epigraph a { color: inherit; }
+.epigraph a:hover { color: var(--text); }
+
+/* Figure the text wraps around (stacks normally on narrow screens) */
+figure.float-right { float: right; width: 60%; margin: 0.25rem 0 1rem 1.5rem; }
+@media (max-width: 600px) {
+  figure.float-right { float: none; width: 80%; margin: 1.5rem auto; }
+}
+h2, h3 { clear: both; }
+.epigraph.in-text { margin: 0.75rem 0; }
+
+/* Proof schemes: each tree beside the sentences that describe it */
+.scheme-rows { margin: 1.25rem 0 1.5rem; }
+.scheme-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; align-items: center; margin-bottom: 1.25rem; }
+.scheme-row p { margin: 0; }
+.scheme-row img { display: block; width: 100%; height: auto; }
+.scheme-rows figcaption { width: 50%; margin-left: auto; text-align: center; }
+@media (max-width: 600px) {
+  .scheme-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  .scheme-rows figcaption { width: auto; }
+}
+.scheme-tree { width: 70%; margin: 1rem auto 1.5rem; }
+@media (max-width: 600px) { .scheme-tree { width: 100%; } }
+a.green:hover { color: #153B16; }
+a.purple:hover { color: #451944; }
+.scheme-tree { scroll-margin-top: 1.5rem; }
+html { scroll-behavior: smooth; }
+/* A line of text between images in a screen drop-down */
+.tl-screen-note { margin: 1.1rem 0 0.5rem; }
+/* Heading above the closing paragraph (an analogy in a : b :: c : d form) */
+h3.analogy { margin-top: 2.75rem; word-spacing: 0.1em; }
+
+/* Reference list: APA hanging indent */
+section[data-src$="references.md"] p {
+  padding-left: 2em;
+  text-indent: -2em;
+  overflow-wrap: anywhere;
+}
+
+/* Collapsed reactions under the intro paragraph */
+.reactions-more { margin: 0.75rem 0 1rem; }
+.reactions-more > .answer-toggle { color: var(--muted); }
+.reactions-more > .answer-toggle:hover { color: var(--text); }
+
+/* Quote columns (intro reactions + sociomathematical norms): no box, dark text,
+   a colored line on the left. The bottom fades out so it's clear the column scrolls.
+   Drag the bottom-right corner to make a column taller. */
+.quote-box {
+  --accent: #a747a3;
+  height: 28rem;
+  min-height: 12rem;
+  resize: vertical;
+  background: none;
+  border-radius: 0;
+  border-left: 2px solid var(--accent);
+  padding: 0 1rem 3rem 1.25rem;
+  color: var(--text);
+  -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent);
+          mask-image: linear-gradient(to bottom, #000 85%, transparent);
+}
+.quote-box.quotes-green { --accent: #39873C; }
+#reactions-panel .quote-box { height: 24rem; } /* intro reactions are optional reading */
+.quote cite { color: var(--accent); }
+/* Wrap a key line in <span class="hl">...</span> to color it */
+.quote .hl { color: var(--accent); font-weight: 600; }
+
+/* Placeholders in the references that still need filling in */
+.need { color: #d1242f; }
+
+/* One full-width scrolling quote box (no side-by-side columns) */
+.quote-single { margin: 2rem 2.5rem; } /* side margins = how much narrower than the text */
+.quote-single > figcaption { margin-top: 0.6rem; }
+@media (max-width: 40rem) { .quote-single { margin: 2rem 0; } } /* full width on phones */
+
+
+/* Same dark purple / dark green as the transcript timelines (e.g. "Transcript Summary" labels) */
+.dark-purple { color: #6f3c7a; }
+.dark-green { color: #2f6f32; }
+
+/* Link back to the homepage */
+.home-link { display: inline-flex; margin-bottom: 1.75rem; }
+.home-link svg { display: block; }
+.byline a { color: inherit; }
+.byline a:hover { color: var(--text); }
